@@ -1117,6 +1117,22 @@ CRITICAL  : < 99.00%
 
 ### Availability Formula
 
+
+
+## Screenshots
+
+### Dashboard
+
+dashboard.png
+
+### Reports
+
+![ports.png
+
+### PDF Report
+
+![port_pdf.png
+
 ```text
 Availability (%) =
 (Successful Checks / Total Historical Checks) * 100

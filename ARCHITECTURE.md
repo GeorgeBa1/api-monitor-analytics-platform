@@ -1,11 +1,11 @@
-# API Monitor Architecture
-> **Current release: v3.0.0** — Unified Premium UI, reliable Run/Stop/Reset controls, verified monitoring-worker startup, persistent worker logging, and synchronized documentation. Monitoring data reset preserves API definitions and users while clearing monitoring checks/alerts and generated history artifacts.
+# A.P.I. Sentinel Architecture
+> **Current release: v3.0.0 — Enterprise A.P.I. Sentineling, Analytics & Observability Platform.
 
 ## Overview
 
-Το **API Monitor & Analytics Platform** ακολουθεί modular architecture με ξεχωριστά components για monitoring, analytics, reporting, alerting, notifications και web observability.
+Το **A.P.I. Sentinel** ακολουθεί modular architecture με ξεχωριστά components για monitoring, analytics, reporting, alerting, notifications και web observability.
 
-Στην **v2.3.0**, το Web Dashboard αποτελεί πλέον βασικό component της πλατφόρμας.
+Στην **v3.0.0**, το Web Dashboard αποτελεί πλέον βασικό component της πλατφόρμας.
 
 Η αρχιτεκτονική χωρίζεται σε:
 
@@ -28,7 +28,7 @@ Web Dashboard Layer
 ---
 
 
-## Current v2.3.0 Operational Additions
+## Current v3.0.0 Operational Additions
 
 The current implementation also includes:
 
@@ -37,7 +37,7 @@ The current implementation also includes:
 - Dashboard live status through `/api/dashboard-status`.
 - Live alert status through `/api/alerts-status`.
 - Session-based authentication and role-based authorization.
-- ADMIN, OPERATOR and VIEWER roles.
+- ADMIN, OPERATOR and USER roles.
 - RUN and STOP monitoring controls for ADMIN and OPERATOR.
 - ADMIN-only RESET monitoring data control.
 - Dynamic chart versioning based on generated static chart file timestamps.
@@ -53,7 +53,7 @@ The current implementation also includes:
                                │
                                ▼
                     ┌─────────────────────┐
-                    │   API Monitoring    │
+                    │   A.P.I. Sentineling    │
                     │    api_testing.py   │
                     └──────────┬──────────┘
                                │
@@ -924,7 +924,7 @@ Microsoft Teams
 
 ---
 
-# Dashboard Architecture v2.3.0
+# Dashboard Architecture v3.0.0
 
 ```text
                          WEB DASHBOARD
@@ -1078,7 +1078,7 @@ logs/transactions.log
 
 # Observability Layers
 
-The v2.3.0 architecture can be viewed as five observability layers.
+The v3.0.0 architecture can be viewed as five observability layers.
 
 ```text
 1. Monitoring
@@ -1135,7 +1135,7 @@ Presents:
 
 ---
 
-# Architecture Highlights v2.3.0
+# Architecture Highlights v3.0.0
 
 Added:
 
@@ -1156,7 +1156,7 @@ Added:
 # Current Version
 
 ```text
-API Monitor v2.3.0
+A.P.I. Sentinel v3.0.0
 ```
 
 Release:
@@ -1174,6 +1174,6 @@ Production Ready
 ```
 
 
-## v2.7.4 Operational Notes
+## v3.0.0 Operational Notes
 
 The current release uses the unified Premium UI across the Dashboard, APIs, Endpoints, Analytics, Alerts, Reports and Users areas. Monitoring controls are now operationally verified: Run checks worker startup, Stop clears stale worker state, and Reset removes monitoring history from the database and generated artifacts while preserving users and API definitions. Worker startup output is available in `monitoring.log`.

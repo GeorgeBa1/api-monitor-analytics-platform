@@ -1,14 +1,24 @@
-# API Monitor Installation Guide
+# A.P.I. Sentinel v3.0.0
+> **Current release: v3.0.0 — Enterprise A.P.I. Sentineling, Analytics & Observability Platform.
+
+# Installation Guide
 
 ## Requirements
 
-- Python 3.10+
-- pip
-- Internet Connectivity
+* Python 3.10+
+* pip
+* Internet Connectivity
 
 ---
 
-## Clone Repository
+
+## Current v3.0.0 Runtime Notes
+
+Η τρέχουσα εφαρμογή περιλαμβάνει Flask Web Dashboard, background monitoring worker, monitoring heartbeat, live dashboard/alert APIs και session-based authentication.
+
+Το production runtime χρησιμοποιεί τα υπάρχοντα project paths για configuration, reports, charts, logs και historical data.
+
+# Clone Repository
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/api-monitor.git
@@ -18,7 +28,7 @@ cd api-monitor
 
 ---
 
-## Create Virtual Environment
+# Create Virtual Environment
 
 ```bash
 python -m venv .venv
@@ -26,15 +36,15 @@ python -m venv .venv
 
 ---
 
-## Activate Virtual Environment
+# Activate Virtual Environment
 
-### Windows
+## Windows
 
 ```bash
 .venv\Scripts\activate
 ```
 
-### Linux / macOS
+## Linux / macOS
 
 ```bash
 source .venv/bin/activate
@@ -42,35 +52,35 @@ source .venv/bin/activate
 
 ---
 
-## Install Dependencies
+# Install Dependencies
 
 ```bash
-pip install requests
-pip install pandas
-pip install pyyaml
-pip install openpyxl
-pip install schedule
-pip install rich
-pip install matplotlib
+pip install requests pandas pyyaml openpyxl schedule rich matplotlib flask
 ```
 
-or
+ή:
 
 ```bash
-pip install requests pandas pyyaml openpyxl schedule rich matplotlib
+pip install requests pandas pyyaml openpyxl schedule rich matplotlib flask
+```
+
+Εάν υπάρχει `requirements.txt`, προτιμάται:
+
+```bash
+pip install -r requirements.txt
 ```
 
 ---
 
-## Configure
+# Configuration
 
-Create:
+Δημιούργησε:
 
 ```text
-config.yaml
+runtime configuration
 ```
 
-Example:
+Παράδειγμα:
 
 ```yaml
 timeout: 30
@@ -78,6 +88,8 @@ timeout: 30
 method_discovery: true
 
 parallel_execution: false
+
+max_workers: 10
 
 email_notifications: true
 
@@ -114,63 +126,7 @@ endpoints:
 
 ---
 
-## Supported Features
-
-The platform supports:
-
-✅ Multiple Endpoint Monitoring
-
-✅ HTTP Method Discovery
-
-✅ Bearer Token Authentication
-
-✅ Basic Authentication
-
-✅ DNS Validation
-
-✅ SSL Validation
-
-✅ Response Time Monitoring
-
-✅ Performance Classification
-
-✅ JSON Validation
-
-✅ Required Field Validation
-
-✅ Expected Value Validation
-
-✅ SLA Metrics
-
-✅ Historical Availability Tracking
-
-✅ Trend Analytics
-
-✅ Health Rating Engine
-
-✅ Health Status Analytics
-
-✅ Performance Risk Analytics
-
-✅ Recommendation Engine
-
-✅ Executive Dashboard
-
-✅ Response Time Charts
-
-✅ Health Score Charts
-
-✅ Availability Charts
-
-✅ Email Notifications
-
-✅ Microsoft Teams Notifications
-
-✅ Alert Engine
-
----
-
-## Run
+# Run Monitoring
 
 ```bash
 python main.py
@@ -178,69 +134,71 @@ python main.py
 
 ---
 
-## Generated Files
+# Run Web Dashboard
+
+Εάν το Web Dashboard εκκινεί από το Flask application:
+
+```bash
+python dashboard.py
+```
+
+Στη συνέχεια άνοιξε το dashboard από τον browser στη διεύθυνση που εμφανίζει το Flask application.
+
+Το Alerts Dashboard χρησιμοποιεί:
 
 ```text
-reports/
-
-├── report.csv
-├── report.xlsx
-├── report.html
-├── trend_report.csv
-├── trend_report.xlsx
-├── JSON_Test_response_time_chart.png
-├── JSON_Test_health_score_chart.png
-├── JSON_Test_availability_chart.png
-└── sla_history.csv
-
-logs/
-
-└── transactions.log
+/api/alerts-status
 ```
+
+για live ενημέρωση.
 
 ---
 
-## Verify Installation
+# Supported Features
 
-Expected output:
+Η έκδοση v3.0.0 υποστηρίζει:
 
-```text
-============================================================
-API Monitor v1.8.0
-============================================================
+✅ Multiple Endpoint Monitoring
 
-Loading configuration...
+✅ GET
 
-Testing APIs...
+✅ POST
 
-✅ SCAN COMPLETED
+✅ PUT
 
-Total Endpoints : 1
+✅ PATCH
 
-Successful      : 1
+✅ DELETE
 
-Failed          : 0
+✅ HEAD
 
-Availability    : 100.0%
+✅ OPTIONS
 
-SLA Rating      : EXCELLENT
+✅ Basic Authentication
 
-Health Rating   : EXCELLENT
-```
+✅ Bearer Token Authentication
 
----
+✅ DNS Validation
 
-## HTML Dashboard
+✅ SSL Validation
 
-The platform automatically generates an HTML Executive Dashboard.
+✅ Response Time Monitoring
 
-Dashboard Includes:
+✅ Response Size Monitoring
 
-✅ Endpoint Summary
+✅ JSON Validation
 
-✅ SLA Analytics
+✅ Required Fields Validation
 
-✅ Executive Dashboard
+✅ Expected Values Validation
+
+✅ Retry Mechanism
+
+✅ Parallel Execution
+
+✅ HTTP Method Discovery
+
+✅ Health Score
 
 ✅ Health Rating
 
@@ -250,92 +208,311 @@ Dashboard Includes:
 
 ✅ Recommendation Engine
 
-✅ Response Time Trend Chart
+✅ SLA Metrics
 
-✅ Health Score Trend Chart
+✅ Availability Analytics
 
-✅ Availability Trend Chart
+✅ Historical Tracking
 
-✅ Response Preview
+✅ Trend Analytics
 
-Output:
+✅ Response Time Trends
 
-```text
-reports/report.html
-```
+✅ Availability Trends
+
+✅ Health Score Trends
+
+✅ Alert Engine
+
+✅ Smart Alert Rules
+
+✅ Alert History
+
+✅ Alert Analytics
+
+✅ Alert Status Tracking
+
+✅ Web Dashboard
+
+✅ Live Alert Dashboard
+
+✅ Email Notifications
+
+✅ Microsoft Teams Notifications
+
+✅ Power Automate Integration
+
+✅ Adaptive Cards
+
+✅ CSV Reports
+
+✅ Excel Reports
+
+✅ HTML Reports
+
+✅ PDF Reports
 
 ---
 
-## Troubleshooting
-
-### Missing Python Package
-
-```text
-ModuleNotFoundError
-```
-
-Install dependencies:
-
-```bash
-pip install requests pandas pyyaml openpyxl schedule rich matplotlib
-```
-
----
-
-### Teams Notifications Not Working
-
-Verify:
-
-```yaml
-teams:
-
-  enabled: true
-
-  webhook_url: YOUR_WEBHOOK_URL
-```
-
----
-
-### Charts Not Generated
-
-Verify that:
+# Generated Files
 
 ```text
 reports/
 
-JSON_Test_response_time_chart.png
-
-JSON_Test_health_score_chart.png
-
-JSON_Test_availability_chart.png
+├── report.csv
+├── report.xlsx
+├── report.html
+├── report.pdf
+├── trend_report.csv
+├── trend_report.xlsx
+├── alerts.csv
+├── sla_history.csv
+│
+├── JSON_Test_response_time_chart.png
+├── JSON_Test_health_score_chart.png
+└── JSON_Test_availability_chart.png
 ```
 
-are created after execution.
+Logs:
+
+```text
+logs/
+
+└── transactions.log
+```
 
 ---
 
-### HTML Report Not Generated
+# Alert History
 
-Verify:
+Το Alert History αποθηκεύεται:
 
 ```text
-api_tester/templates/report_template.html
+reports/alerts.csv
 ```
 
-exists and is accessible.
+Το αρχείο περιέχει:
+
+```text
+Timestamp
+
+Endpoint
+
+Severity
+
+Reason
+
+Alert Status
+```
+
+Το alert status μπορεί να είναι:
+
+```text
+ACTIVE
+
+ACKNOWLEDGED
+
+RESOLVED
+
+CLOSED
+
+UNKNOWN
+```
 
 ---
 
-## Installation Completed
+# Verify Installation
 
-Successful installation should generate:
+Μετά την εγκατάσταση, το monitoring engine θα πρέπει να εμφανίσει παρόμοιο αποτέλεσμα:
 
 ```text
-CSV Reports
+============================================================
 
-Excel Reports
+A.P.I. Sentinel v3.0.0
 
-HTML Dashboard
+============================================================
+
+Loading configuration...
+
+Testing APIs...
+
+SCAN COMPLETED
+
+Total Endpoints : 1
+
+Successful      : 1
+
+Failed          : 0
+
+Availability    : 100.00%
+
+SLA Rating      : EXCELLENT
+
+Health Rating   : EXCELLENT
+```
+
+---
+
+# Web Dashboard Verification
+
+Έλεγξε ότι λειτουργούν:
+
+```text
+Dashboard
+
+Endpoints
+
+Analytics
+
+Alerts
+
+Reports
+```
+
+Στο Alerts Dashboard πρέπει να εμφανίζονται:
+
+```text
+Total Alerts
+
+Critical Alerts
+
+Warning Alerts
+
+Alert Status
+
+Alert Trend
+
+Alert History
+```
+
+---
+
+# Live Alert Updates
+
+Το Alerts Dashboard πραγματοποιεί αυτόματη ενημέρωση κάθε:
+
+```text
+5 seconds
+```
+
+μέσω:
+
+```text
+GET /api/alerts-status
+```
+
+Το endpoint επιστρέφει:
+
+```json
+{
+    "monitoring_status": "...",
+    "total_alerts": 0,
+    "critical_alerts": 0,
+    "warning_alerts": 0,
+    "alert_trend": "STABLE",
+    "alerts": []
+}
+```
+
+---
+
+# Troubleshooting
+
+## ModuleNotFoundError
+
+Εκτέλεσε:
+
+```bash
+pip install -r requirements.txt
+```
+
+ή:
+
+```bash
+pip install requests pandas pyyaml openpyxl schedule rich matplotlib flask
+```
+
+---
+
+## Dashboard Not Starting
+
+Έλεγξε:
+
+```text
+app.py
+```
+
+και ότι το Flask application ξεκινά χωρίς errors.
+
+---
+
+## Alerts Dashboard Empty
+
+Έλεγξε ότι υπάρχει:
+
+```text
+reports/alerts.csv
+```
+
+και ότι περιέχει valid CSV data.
+
+---
+
+## Alert History Shows Duplicates
+
+Έλεγξε το `alert_analytics.py`.
+
+Η προσθήκη κάθε alert πρέπει να γίνεται μόνο μία φορά:
+
+```python
+alerts.append(clean_row)
+```
+
+και όχι:
+
+```python
+alerts.append(clean_row)
+alerts.append(clean_row)
+```
+
+---
+
+## Alert Status Shows UNKNOWN
+
+Έλεγξε τα fields:
+
+```text
+health_status
+
+health_rating
+```
+
+Το σύστημα χρησιμοποιεί αυτά τα values για να παράγει το `alert_status`.
+
+---
+
+## Charts Not Generated
+
+Έλεγξε ότι υπάρχει εγκατεστημένο το:
+
+```bash
+pip install matplotlib
+```
+
+---
+
+## HTML Dashboard Not Generated
+
+Έλεγξε ότι υπάρχει το αντίστοιχο HTML template μέσα στο project.
+
+---
+
+# Installation Completed
+
+Μία επιτυχημένη εγκατάσταση πρέπει να παρέχει:
+
+```text
+A.P.I. Sentineling
 
 SLA Analytics
 
@@ -343,4 +520,51 @@ Trend Analytics
 
 Health Analytics
 
-Availability Analytics
+Alert Engine
+
+Alert History
+
+Alert Analytics
+
+Web Dashboard
+
+Live Alert Updates
+
+CSV Reports
+
+Excel Reports
+
+HTML Reports
+
+PDF Reports
+
+Email Notifications
+
+Microsoft Teams Notifications
+```
+
+---
+
+# Version
+
+```text
+A.P.I. Sentinel v3.0.0
+
+Release:
+Web Dashboard & Observability Platform
+
+Status:
+Stable / Production Ready
+```
+
+
+## v3.0.0 Operational Notes
+
+The current release uses the unified Premium UI across the Dashboard, APIs, Endpoints, Analytics, Alerts, Reports and Users areas. Monitoring controls are now operationally verified: Run checks worker startup, Stop clears stale worker state, and Reset removes monitoring history from the database and generated artifacts while preserving users and API definitions. Worker startup output is available in `monitoring.log`.
+
+
+## A.P.I. Sentinel 3.0.0 Installation Model
+
+For the current application, API definitions are managed from the **APIs** page and persisted in the database. Do not treat a checked-in YAML file as the authoritative API inventory.
+
+For Windows standalone deployment, use the packaged executable and installer workflow described in `EXE_CONFIGURATION_ARCHITECTURE.md` and `COMMERCIAL_READINESS.md`.
